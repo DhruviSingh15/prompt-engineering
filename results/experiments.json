@@ -1,0 +1,846 @@
+{
+  "metadata": {
+    "model": "gemini-3.5-flash-lite",
+    "timestamp": "2026-10-26 00:58:03",
+    "sdk": "google-genai"
+  },
+  "experiment_1_zero_vs_few_shot": [
+    {
+      "test_id": "T1_Sarcasm",
+      "input_text": "Oh wonderful, your latest update just wiped 4 months of client invoices right before my tax audit. Top notch engineering guys, absolutely stellar work!",
+      "expected": "Category: Technical / Bug | Sentiment: Frustrated | Urgency: Critical | Actionable: YES",
+      "zero_shot": {
+        "system_instruction": "You are an automated customer support triage engine. Classify the input text into: Category, Sentiment, Urgency, and Actionable.\nAllowed Categories: [Billing / Refund, Technical / Bug, Account Security, Feature Request, Cancellation]\nAllowed Sentiment: [Positive, Neutral, Negative, Frustrated]\nAllowed Urgency: [Low, Medium, High, Critical]\nAllowed Actionable: [YES, NO]\nOutput format must be strictly a single line:\nCategory: <category> | Sentiment: <sentiment> | Urgency: <urgency> | Actionable: <actionable>\nDo not include any greeting, preamble, reasoning, or markdown formatting.",
+        "user_prompt": "Input: Oh wonderful, your latest update just wiped 4 months of client invoices right before my tax audit. Top notch engineering guys, absolutely stellar work!\nOutput:",
+        "raw_output": "Category: Technical / Bug | Sentiment: Frustrated | Urgency: Critical | Actionable: YES",
+        "latency_sec": 4.447
+      },
+      "few_shot": {
+        "system_instruction": "You are an automated customer support triage engine. Classify the input text into: Category, Sentiment, Urgency, and Actionable.\nAllowed Categories: [Billing / Refund, Technical / Bug, Account Security, Feature Request, Cancellation]\nAllowed Sentiment: [Positive, Neutral, Negative, Frustrated]\nAllowed Urgency: [Low, Medium, High, Critical]\nAllowed Actionable: [YES, NO]\nOutput format must be strictly a single line:\nCategory: <category> | Sentiment: <sentiment> | Urgency: <urgency> | Actionable: <actionable>\nDo not include any greeting, preamble, reasoning, or markdown formatting.\n\n--- EXAMPLES ---\nInput: Wow, thank you SO much for locking my account 10 minutes before my investor demo because of a 'suspicious' login from my own laptop. Truly brilliant work.\nOutput: Category: Account Security | Sentiment: Frustrated | Urgency: Critical | Actionable: YES\n\nInput: Could we get an option to export tables as CSV instead of just PDF? Would save us 15 minutes every Friday. Otherwise loving the platform!\nOutput: Category: Feature Request | Sentiment: Positive | Urgency: Low | Actionable: NO\n\nInput: I was double billed for invoice #4029 on my corporate Mastercard. Please issue a credit to the card.\nOutput: Category: Billing / Refund | Sentiment: Neutral | Urgency: High | Actionable: YES\n\nInput: I'm shutting down my agency so I will not be renewing our enterprise plan next month. Thanks for the support over the past two years.\nOutput: Category: Cancellation | Sentiment: Neutral | Urgency: Medium | Actionable: YES\n--- END EXAMPLES ---",
+        "user_prompt": "Input: Oh wonderful, your latest update just wiped 4 months of client invoices right before my tax audit. Top notch engineering guys, absolutely stellar work!\nOutput:",
+        "raw_output": "Category: Technical / Bug | Sentiment: Frustrated | Urgency: Critical | Actionable: YES",
+        "latency_sec": 0.763
+      }
+    },
+    {
+      "test_id": "T2_Account_Security",
+      "input_text": "Hi team, love the software! Just noticed two unauthorized password reset emails in Russian sent to my inbox at 3 AM. I haven't logged in from Europe. Could you verify my session security please?",
+      "expected": "Category: Account Security | Sentiment: Neutral | Urgency: High | Actionable: YES",
+      "zero_shot": {
+        "system_instruction": "You are an automated customer support triage engine. Classify the input text into: Category, Sentiment, Urgency, and Actionable.\nAllowed Categories: [Billing / Refund, Technical / Bug, Account Security, Feature Request, Cancellation]\nAllowed Sentiment: [Positive, Neutral, Negative, Frustrated]\nAllowed Urgency: [Low, Medium, High, Critical]\nAllowed Actionable: [YES, NO]\nOutput format must be strictly a single line:\nCategory: <category> | Sentiment: <sentiment> | Urgency: <urgency> | Actionable: <actionable>\nDo not include any greeting, preamble, reasoning, or markdown formatting.",
+        "user_prompt": "Input: Hi team, love the software! Just noticed two unauthorized password reset emails in Russian sent to my inbox at 3 AM. I haven't logged in from Europe. Could you verify my session security please?\nOutput:",
+        "raw_output": "Category: Account Security | Sentiment: Frustrated | Urgency: Critical | Actionable: YES",
+        "latency_sec": 7.247
+      },
+      "few_shot": {
+        "system_instruction": "You are an automated customer support triage engine. Classify the input text into: Category, Sentiment, Urgency, and Actionable.\nAllowed Categories: [Billing / Refund, Technical / Bug, Account Security, Feature Request, Cancellation]\nAllowed Sentiment: [Positive, Neutral, Negative, Frustrated]\nAllowed Urgency: [Low, Medium, High, Critical]\nAllowed Actionable: [YES, NO]\nOutput format must be strictly a single line:\nCategory: <category> | Sentiment: <sentiment> | Urgency: <urgency> | Actionable: <actionable>\nDo not include any greeting, preamble, reasoning, or markdown formatting.\n\n--- EXAMPLES ---\nInput: Wow, thank you SO much for locking my account 10 minutes before my investor demo because of a 'suspicious' login from my own laptop. Truly brilliant work.\nOutput: Category: Account Security | Sentiment: Frustrated | Urgency: Critical | Actionable: YES\n\nInput: Could we get an option to export tables as CSV instead of just PDF? Would save us 15 minutes every Friday. Otherwise loving the platform!\nOutput: Category: Feature Request | Sentiment: Positive | Urgency: Low | Actionable: NO\n\nInput: I was double billed for invoice #4029 on my corporate Mastercard. Please issue a credit to the card.\nOutput: Category: Billing / Refund | Sentiment: Neutral | Urgency: High | Actionable: YES\n\nInput: I'm shutting down my agency so I will not be renewing our enterprise plan next month. Thanks for the support over the past two years.\nOutput: Category: Cancellation | Sentiment: Neutral | Urgency: Medium | Actionable: YES\n--- END EXAMPLES ---",
+        "user_prompt": "Input: Hi team, love the software! Just noticed two unauthorized password reset emails in Russian sent to my inbox at 3 AM. I haven't logged in from Europe. Could you verify my session security please?\nOutput:",
+        "raw_output": "Category: Account Security | Sentiment: Frustrated | Urgency: Critical | Actionable: YES",
+        "latency_sec": 2.412
+      }
+    },
+    {
+      "test_id": "T3_Billing_Dispute",
+      "input_text": "Why did my card get charged $89 when the signup modal explicitly promised $29/month? If this isn't reversed immediately I will initiate a chargeback with Chase.",
+      "expected": "Category: Billing / Refund | Sentiment: Frustrated | Urgency: High | Actionable: YES",
+      "zero_shot": {
+        "system_instruction": "You are an automated customer support triage engine. Classify the input text into: Category, Sentiment, Urgency, and Actionable.\nAllowed Categories: [Billing / Refund, Technical / Bug, Account Security, Feature Request, Cancellation]\nAllowed Sentiment: [Positive, Neutral, Negative, Frustrated]\nAllowed Urgency: [Low, Medium, High, Critical]\nAllowed Actionable: [YES, NO]\nOutput format must be strictly a single line:\nCategory: <category> | Sentiment: <sentiment> | Urgency: <urgency> | Actionable: <actionable>\nDo not include any greeting, preamble, reasoning, or markdown formatting.",
+        "user_prompt": "Input: Why did my card get charged $89 when the signup modal explicitly promised $29/month? If this isn't reversed immediately I will initiate a chargeback with Chase.\nOutput:",
+        "raw_output": "Category: Billing / Refund | Sentiment: Frustrated | Urgency: High | Actionable: YES",
+        "latency_sec": 2.46
+      },
+      "few_shot": {
+        "system_instruction": "You are an automated customer support triage engine. Classify the input text into: Category, Sentiment, Urgency, and Actionable.\nAllowed Categories: [Billing / Refund, Technical / Bug, Account Security, Feature Request, Cancellation]\nAllowed Sentiment: [Positive, Neutral, Negative, Frustrated]\nAllowed Urgency: [Low, Medium, High, Critical]\nAllowed Actionable: [YES, NO]\nOutput format must be strictly a single line:\nCategory: <category> | Sentiment: <sentiment> | Urgency: <urgency> | Actionable: <actionable>\nDo not include any greeting, preamble, reasoning, or markdown formatting.\n\n--- EXAMPLES ---\nInput: Wow, thank you SO much for locking my account 10 minutes before my investor demo because of a 'suspicious' login from my own laptop. Truly brilliant work.\nOutput: Category: Account Security | Sentiment: Frustrated | Urgency: Critical | Actionable: YES\n\nInput: Could we get an option to export tables as CSV instead of just PDF? Would save us 15 minutes every Friday. Otherwise loving the platform!\nOutput: Category: Feature Request | Sentiment: Positive | Urgency: Low | Actionable: NO\n\nInput: I was double billed for invoice #4029 on my corporate Mastercard. Please issue a credit to the card.\nOutput: Category: Billing / Refund | Sentiment: Neutral | Urgency: High | Actionable: YES\n\nInput: I'm shutting down my agency so I will not be renewing our enterprise plan next month. Thanks for the support over the past two years.\nOutput: Category: Cancellation | Sentiment: Neutral | Urgency: Medium | Actionable: YES\n--- END EXAMPLES ---",
+        "user_prompt": "Input: Why did my card get charged $89 when the signup modal explicitly promised $29/month? If this isn't reversed immediately I will initiate a chargeback with Chase.\nOutput:",
+        "raw_output": "Category: Billing / Refund | Sentiment: Frustrated | Urgency: Critical | Actionable: YES",
+        "latency_sec": 1.376
+      }
+    },
+    {
+      "test_id": "T4_Feature_Request",
+      "input_text": "Would it be possible to add dark mode to the PDF export view? Current white background is a bit harsh on the eyes during late night review sessions, but otherwise everything is great!",
+      "expected": "Category: Feature Request | Sentiment: Positive | Urgency: Low | Actionable: NO",
+      "zero_shot": {
+        "system_instruction": "You are an automated customer support triage engine. Classify the input text into: Category, Sentiment, Urgency, and Actionable.\nAllowed Categories: [Billing / Refund, Technical / Bug, Account Security, Feature Request, Cancellation]\nAllowed Sentiment: [Positive, Neutral, Negative, Frustrated]\nAllowed Urgency: [Low, Medium, High, Critical]\nAllowed Actionable: [YES, NO]\nOutput format must be strictly a single line:\nCategory: <category> | Sentiment: <sentiment> | Urgency: <urgency> | Actionable: <actionable>\nDo not include any greeting, preamble, reasoning, or markdown formatting.",
+        "user_prompt": "Input: Would it be possible to add dark mode to the PDF export view? Current white background is a bit harsh on the eyes during late night review sessions, but otherwise everything is great!\nOutput:",
+        "raw_output": "Category: Feature Request | Sentiment: Positive | Urgency: Low | Actionable: YES",
+        "latency_sec": 2.218
+      },
+      "few_shot": {
+        "system_instruction": "You are an automated customer support triage engine. Classify the input text into: Category, Sentiment, Urgency, and Actionable.\nAllowed Categories: [Billing / Refund, Technical / Bug, Account Security, Feature Request, Cancellation]\nAllowed Sentiment: [Positive, Neutral, Negative, Frustrated]\nAllowed Urgency: [Low, Medium, High, Critical]\nAllowed Actionable: [YES, NO]\nOutput format must be strictly a single line:\nCategory: <category> | Sentiment: <sentiment> | Urgency: <urgency> | Actionable: <actionable>\nDo not include any greeting, preamble, reasoning, or markdown formatting.\n\n--- EXAMPLES ---\nInput: Wow, thank you SO much for locking my account 10 minutes before my investor demo because of a 'suspicious' login from my own laptop. Truly brilliant work.\nOutput: Category: Account Security | Sentiment: Frustrated | Urgency: Critical | Actionable: YES\n\nInput: Could we get an option to export tables as CSV instead of just PDF? Would save us 15 minutes every Friday. Otherwise loving the platform!\nOutput: Category: Feature Request | Sentiment: Positive | Urgency: Low | Actionable: NO\n\nInput: I was double billed for invoice #4029 on my corporate Mastercard. Please issue a credit to the card.\nOutput: Category: Billing / Refund | Sentiment: Neutral | Urgency: High | Actionable: YES\n\nInput: I'm shutting down my agency so I will not be renewing our enterprise plan next month. Thanks for the support over the past two years.\nOutput: Category: Cancellation | Sentiment: Neutral | Urgency: Medium | Actionable: YES\n--- END EXAMPLES ---",
+        "user_prompt": "Input: Would it be possible to add dark mode to the PDF export view? Current white background is a bit harsh on the eyes during late night review sessions, but otherwise everything is great!\nOutput:",
+        "raw_output": "Category: Feature Request | Sentiment: Positive | Urgency: Low | Actionable: NO",
+        "latency_sec": 1.437
+      }
+    },
+    {
+      "test_id": "T5_Cancellation",
+      "input_text": "Please cancel my auto-renew subscription at the end of the current billing cycle. No issues with the product itself, just downsizing my consultancy.",
+      "expected": "Category: Cancellation | Sentiment: Neutral | Urgency: Medium | Actionable: YES",
+      "zero_shot": {
+        "system_instruction": "You are an automated customer support triage engine. Classify the input text into: Category, Sentiment, Urgency, and Actionable.\nAllowed Categories: [Billing / Refund, Technical / Bug, Account Security, Feature Request, Cancellation]\nAllowed Sentiment: [Positive, Neutral, Negative, Frustrated]\nAllowed Urgency: [Low, Medium, High, Critical]\nAllowed Actionable: [YES, NO]\nOutput format must be strictly a single line:\nCategory: <category> | Sentiment: <sentiment> | Urgency: <urgency> | Actionable: <actionable>\nDo not include any greeting, preamble, reasoning, or markdown formatting.",
+        "user_prompt": "Input: Please cancel my auto-renew subscription at the end of the current billing cycle. No issues with the product itself, just downsizing my consultancy.\nOutput:",
+        "raw_output": "Category: Cancellation | Sentiment: Neutral | Urgency: Low | Actionable: YES",
+        "latency_sec": 2.24
+      },
+      "few_shot": {
+        "system_instruction": "You are an automated customer support triage engine. Classify the input text into: Category, Sentiment, Urgency, and Actionable.\nAllowed Categories: [Billing / Refund, Technical / Bug, Account Security, Feature Request, Cancellation]\nAllowed Sentiment: [Positive, Neutral, Negative, Frustrated]\nAllowed Urgency: [Low, Medium, High, Critical]\nAllowed Actionable: [YES, NO]\nOutput format must be strictly a single line:\nCategory: <category> | Sentiment: <sentiment> | Urgency: <urgency> | Actionable: <actionable>\nDo not include any greeting, preamble, reasoning, or markdown formatting.\n\n--- EXAMPLES ---\nInput: Wow, thank you SO much for locking my account 10 minutes before my investor demo because of a 'suspicious' login from my own laptop. Truly brilliant work.\nOutput: Category: Account Security | Sentiment: Frustrated | Urgency: Critical | Actionable: YES\n\nInput: Could we get an option to export tables as CSV instead of just PDF? Would save us 15 minutes every Friday. Otherwise loving the platform!\nOutput: Category: Feature Request | Sentiment: Positive | Urgency: Low | Actionable: NO\n\nInput: I was double billed for invoice #4029 on my corporate Mastercard. Please issue a credit to the card.\nOutput: Category: Billing / Refund | Sentiment: Neutral | Urgency: High | Actionable: YES\n\nInput: I'm shutting down my agency so I will not be renewing our enterprise plan next month. Thanks for the support over the past two years.\nOutput: Category: Cancellation | Sentiment: Neutral | Urgency: Medium | Actionable: YES\n--- END EXAMPLES ---",
+        "user_prompt": "Input: Please cancel my auto-renew subscription at the end of the current billing cycle. No issues with the product itself, just downsizing my consultancy.\nOutput:",
+        "raw_output": "Category: Cancellation | Sentiment: Neutral | Urgency: Medium | Actionable: YES",
+        "latency_sec": 1.262
+      }
+    },
+    {
+      "test_id": "T6_Minor_Glitch",
+      "input_text": "Hey, is the analytics dashboard having a minor hiccup today? The graphs took about 10 seconds longer to render on Firefox than usual. Not blocking me, just thought I'd flag it.",
+      "expected": "Category: Technical / Bug | Sentiment: Neutral | Urgency: Low | Actionable: NO",
+      "zero_shot": {
+        "system_instruction": "You are an automated customer support triage engine. Classify the input text into: Category, Sentiment, Urgency, and Actionable.\nAllowed Categories: [Billing / Refund, Technical / Bug, Account Security, Feature Request, Cancellation]\nAllowed Sentiment: [Positive, Neutral, Negative, Frustrated]\nAllowed Urgency: [Low, Medium, High, Critical]\nAllowed Actionable: [YES, NO]\nOutput format must be strictly a single line:\nCategory: <category> | Sentiment: <sentiment> | Urgency: <urgency> | Actionable: <actionable>\nDo not include any greeting, preamble, reasoning, or markdown formatting.",
+        "user_prompt": "Input: Hey, is the analytics dashboard having a minor hiccup today? The graphs took about 10 seconds longer to render on Firefox than usual. Not blocking me, just thought I'd flag it.\nOutput:",
+        "raw_output": "Category: Technical / Bug | Sentiment: Neutral | Urgency: Low | Actionable: YES",
+        "latency_sec": 1.297
+      },
+      "few_shot": {
+        "system_instruction": "You are an automated customer support triage engine. Classify the input text into: Category, Sentiment, Urgency, and Actionable.\nAllowed Categories: [Billing / Refund, Technical / Bug, Account Security, Feature Request, Cancellation]\nAllowed Sentiment: [Positive, Neutral, Negative, Frustrated]\nAllowed Urgency: [Low, Medium, High, Critical]\nAllowed Actionable: [YES, NO]\nOutput format must be strictly a single line:\nCategory: <category> | Sentiment: <sentiment> | Urgency: <urgency> | Actionable: <actionable>\nDo not include any greeting, preamble, reasoning, or markdown formatting.\n\n--- EXAMPLES ---\nInput: Wow, thank you SO much for locking my account 10 minutes before my investor demo because of a 'suspicious' login from my own laptop. Truly brilliant work.\nOutput: Category: Account Security | Sentiment: Frustrated | Urgency: Critical | Actionable: YES\n\nInput: Could we get an option to export tables as CSV instead of just PDF? Would save us 15 minutes every Friday. Otherwise loving the platform!\nOutput: Category: Feature Request | Sentiment: Positive | Urgency: Low | Actionable: NO\n\nInput: I was double billed for invoice #4029 on my corporate Mastercard. Please issue a credit to the card.\nOutput: Category: Billing / Refund | Sentiment: Neutral | Urgency: High | Actionable: YES\n\nInput: I'm shutting down my agency so I will not be renewing our enterprise plan next month. Thanks for the support over the past two years.\nOutput: Category: Cancellation | Sentiment: Neutral | Urgency: Medium | Actionable: YES\n--- END EXAMPLES ---",
+        "user_prompt": "Input: Hey, is the analytics dashboard having a minor hiccup today? The graphs took about 10 seconds longer to render on Firefox than usual. Not blocking me, just thought I'd flag it.\nOutput:",
+        "raw_output": "Category: Technical / Bug | Sentiment: Neutral | Urgency: Low | Actionable: YES",
+        "latency_sec": 1.737
+      }
+    }
+  ],
+  "experiment_2_cot": [
+    {
+      "problem_id": "P1_Logistics_Math",
+      "title": "Multi-Step Manufacturing Packaging & Downtime Problem",
+      "problem_text": "A manufacturing plant has three automated packaging lines: Line A, Line B, and Line C.\n- Line A operates for 8 hours at an unhindered rate of 150 units per hour. However, it requires a 20-minute sanitation shutdown after every 3 hours of continuous operation (the downtime starts at the 3-hour mark and at the 6-hour mark).\n- Line B operates for 10 hours. Its base speed is 20% faster than Line A, but after 6 hours of operation, a motor bearing overheats and drops its speed by 25% for the remaining 4 hours. Line B has no scheduled downtime.\n- Line C operates for 6 hours at a constant rate of 120 units per hour, but 5% of its produced units are defective and discarded.\n- Across all three lines, 2% of the final non-defective packaged units are damaged during pallet wrapping and cannot be shipped.\nWhat is the exact total number of undamaged units ready for shipping at the end of the shift?",
+      "ground_truth": "3,335.92 (or 3,335-3,336 units)",
+      "direct": {
+        "prompt": "A manufacturing plant has three automated packaging lines: Line A, Line B, and Line C.\n- Line A operates for 8 hours at an unhindered rate of 150 units per hour. However, it requires a 20-minute sanitation shutdown after every 3 hours of continuous operation (the downtime starts at the 3-hour mark and at the 6-hour mark).\n- Line B operates for 10 hours. Its base speed is 20% faster than Line A, but after 6 hours of operation, a motor bearing overheats and drops its speed by 25% for the remaining 4 hours. Line B has no scheduled downtime.\n- Line C operates for 6 hours at a constant rate of 120 units per hour, but 5% of its produced units are defective and discarded.\n- Across all three lines, 2% of the final non-defective packaged units are damaged during pallet wrapping and cannot be shipped.\nWhat is the exact total number of undamaged units ready for shipping at the end of the shift?\n\nAnswer directly with the final numerical value or concise list without explaining your thought process.",
+        "raw_output": "To find the exact total number of undamaged units ready for shipping, let's calculate the net output for each line:\n\n1. **Line A:**\n   - Unhindered rate = 150 units/hour.\n   - Operates for 8 hours total, with two 20-minute (1/3 hour) shutdowns at the 3-hour and 6-hour marks.\n   - Actual running time = $8 - \\frac{2}{3} = \\frac{22}{3}$ hours.\n   - Total units produced = $\\frac{22}{3} \\times 150 = 1,100$ units.\n\n2. **Line B:**\n   - Base speed = 20% faster than Line A = $150 \\times 1.20 = 180$ units/hour.\n   - First 6 hours output = $6 \\times 180 = 1,080$ units.\n   - Speed drops by 25% for the remaining 4 hours = $180 \\times (1 - 0.25) = 135$ units/hour.\n   - Remaining 4 hours output = $4 \\times 135 = 540$ units.\n   - Total units produced = $1,080 + 540 = 1,620$ units.\n\n3. **Line C:**\n   - Operates for 6 hours at 120 units/hour = $6 \\times 120 = 720$ units total produced.\n   - 5% are defective and discarded, meaning 95% are non-defective.\n   - Non-defective units = $720 \\times 0.95 = 684$ units.\n\n4. **Total Non-Defective Units across all lines:**\n   - Line A + Line B + Line C (non-defective) = $1,100 + 1,620 + 684 = 3,404$ units.\n\n5. **Damaged during pallet wrapping:**\n   - 2% of the non-defective units are damaged, leaving 98% undamaged and ready for shipping.\n   - Undamaged units = $3,404 \\times (1 - 0.02) = 3,404 \\times 0.98 = 3,335.92$ \n\n*Wait, since units must be whole numbers, let's re-verify the calculations:*\n- Line A: $\\frac{22}{3}$ hours $\\times$ 150 = 1,100 units. (Exact integer)\n- Line B: $1,080 + 540 = 1,620$ units. (Exact integer)\n- Line C: $720 \\times 0.95 = 684$ units. (Exact integer)\n- Total = $3,404$ units.\n- $3,404 \\times 0.98 = 3,335.92$ \n\nSince physical units cannot be fractions, usually in such manufacturing problems a fractional unit implies rounding or a specific context, but let's provide the exact decimal as requested. \n\n**3335.92**",
+        "latency_sec": 2.838
+      },
+      "chain_of_thought": {
+        "prompt": "A manufacturing plant has three automated packaging lines: Line A, Line B, and Line C.\n- Line A operates for 8 hours at an unhindered rate of 150 units per hour. However, it requires a 20-minute sanitation shutdown after every 3 hours of continuous operation (the downtime starts at the 3-hour mark and at the 6-hour mark).\n- Line B operates for 10 hours. Its base speed is 20% faster than Line A, but after 6 hours of operation, a motor bearing overheats and drops its speed by 25% for the remaining 4 hours. Line B has no scheduled downtime.\n- Line C operates for 6 hours at a constant rate of 120 units per hour, but 5% of its produced units are defective and discarded.\n- Across all three lines, 2% of the final non-defective packaged units are damaged during pallet wrapping and cannot be shipped.\nWhat is the exact total number of undamaged units ready for shipping at the end of the shift?\n\nThink step by step. Show your step-by-step intermediate calculations or deductions carefully, identify any constraints or potential traps, and then state the final answer clearly at the end.",
+        "raw_output": "To find the exact total number of undamaged units ready for shipping at the end of the shift, let's break down the production and loss step by step for each packaging line.\n\n---\n\n### Step 1: Calculate the output of Line A\n* **Base unhindered rate:** 150 units/hour\n* **Total operating time:** 8 hours\n* **Sanitation shutdowns:** Line A requires a 20-minute (1/3 hour) shutdown after every 3 hours of continuous operation. \n  * In an 8-hour shift, the shutdowns occur at the 3-hour mark and the 6-hour mark. \n  * Total downtime = $2 \\times \\frac{1}{3}\\text{ hours} = \\frac{2}{3}\\text{ hours}$ (or 40 minutes).\n* **Actual running time:** $8\\text{ hours} - \\frac{2}{3}\\text{ hours} = \\frac{22}{3}\\text{ hours}$.\n* **Total units produced by Line A:** \n  $$\\text{Running time} \\times \\text{Rate} = \\frac{22}{3}\\text{ hours} \\times 150\\text{ units/hour} = 22 \\times 50 = 1,100\\text{ units}$$\n* *Trap Check:* Line A has no defect rate mentioned, so all 1,100 units are initially good.\n\n---\n\n### Step 2: Calculate the output of Line B\n* **Base rate:** Line B is 20% faster than Line A.\n  $$\\text{Line B base rate} = 150 \\times 1.20 = 180\\text{ units/hour}$$\n* **First 6 hours of operation:**\n  $$\\text{Units} = 6\\text{ hours} \\times 180\\text{ units/hour} = 1,080\\text{ units}$$\n* **Remaining 4 hours of operation:** The speed drops by 25%.\n  $$\\text{Reduced rate} = 180 \\times (1 - 0.25) = 180 \\times 0.75 = 135\\text{ units/hour}$$\n  $$\\text{Units} = 4\\text{ hours} \\times 135\\text{ units/hour} = 540\\text{ units}$$\n* **Total units produced by Line B:** \n  $$1,080 + 540 = 1,620\\text{ units}$$\n\n---\n\n### Step 3: Calculate the output of Line C (accounting for defects)\n* **Operating time:** 6 hours\n* **Constant rate:** 120 units/hour\n* **Total units produced:** \n  $$6\\text{ hours} \\times 120\\text{ units/hour} = 720\\text{ units}$$\n* **Defect rate:** 5% of produced units are defective and discarded.\n  $$\\text{Defective units} = 720 \\times 0.05 = 36\\text{ units}$$\n  $$\\text{Non-defective units from Line C} = 720 - 36 = 684\\text{ units}$$\n\n---\n\n### Step 4: Combine total non-defective units from all lines\n* **Line A:** 1,100 units\n* **Line B:** 1,620 units\n* **Line C (non-defective):** 684 units\n\n$$\\text{Total non-defective units} = 1,100 + 1,620 + 684 = 3,404\\text{ units}$$\n\n---\n\n### Step 5: Account for pallet wrapping damage\n* **Damage rate:** 2% of the final non-defective packaged units are damaged during pallet wrapping and cannot be shipped.\n* **Damaged units:** \n  $$3,404 \\times 0.02 = 68.08\\text{ units}$$\n* *Trap Check:* Can units be a fraction? In theoretical manufacturing problems without fractional units specified as physical parts, we calculate the exact mathematical yield. Let's check the numbers: $3,404 \\times 0.98$:\n  $$3,404 \\times (1 - 0.02) = 3,404 \\times 0.98 = 3,335.92$$\n  *Wait*, let's re-verify if the prompt implies whole units or if the math yields a decimal. \n  - $3,404 \\times 2 / 100 = 68.08$. \n  - Since physical units are usually whole numbers, let's check if any intermediate step could result in a fraction:\n    - Line A: $22/3 \\times 150 = 1,100$ (Integer)\n    - Line B: $6 \\times 180 = 1,080$; $4 \\times 135 = 540$. Total = $1,620$ (Integer)\n    - Line C: $6 \\times 120 = 720$. Defective = $720 \\times 0.05 = 36$. Good = $684$ (Integer)\n    - Total = $3,404$ (Integer)\n  - Multiplying by $0.98$ yields $3,335.92$. In strict mathematical terms for this logic puzzle, we provide the exact decimal/fractional calculation unless physical rounding rules are stated, but let's write out the exact value. Alternatively, 2% of 3,404 is 68.08 damaged units, meaning 3,335.92 units are undamaged.\n\n---\n\n### Final Answer\nThe exact total number of undamaged units ready for shipping at the end of the shift is **3,335.92** (or 3,335 whole units with 0.92 of a unit partially damaged/salvageable mathematically).",
+        "latency_sec": 5.039
+      }
+    },
+    {
+      "problem_id": "P2_Deductive_Logic",
+      "title": "5-Person 1-on-1 Performance Review Schedule Deductive Logic Puzzle",
+      "problem_text": "Five colleagues—Elena, Marcus, Priya, Tariq, and Chloe—are scheduled for 1-on-1 performance reviews between 9:00 AM and 2:00 PM on Monday. Each review lasts exactly 1 hour, starting on the hour (9:00 AM, 10:00 AM, 11:00 AM, 12:00 PM, 1:00 PM).\nConstraints:\n1. Elena's review is scheduled earlier than Priya's review, and Priya's review is scheduled earlier than Marcus's review.\n2. Tariq's review is scheduled for the last slot of the day (1:00 PM).\n3. Chloe's review is scheduled earlier than Priya's review, but she is not the first person of the day.\n4. The 11:00 AM slot is assigned to Priya.\n5. Marcus is scheduled immediately before Tariq.\nWhat is the exact chronological schedule (time slot and person) for all 5 reviews?",
+      "ground_truth": "9:00 AM: Elena, 10:00 AM: Chloe, 11:00 AM: Priya, 12:00 PM: Marcus, 1:00 PM: Tariq",
+      "direct": {
+        "prompt": "Five colleagues—Elena, Marcus, Priya, Tariq, and Chloe—are scheduled for 1-on-1 performance reviews between 9:00 AM and 2:00 PM on Monday. Each review lasts exactly 1 hour, starting on the hour (9:00 AM, 10:00 AM, 11:00 AM, 12:00 PM, 1:00 PM).\nConstraints:\n1. Elena's review is scheduled earlier than Priya's review, and Priya's review is scheduled earlier than Marcus's review.\n2. Tariq's review is scheduled for the last slot of the day (1:00 PM).\n3. Chloe's review is scheduled earlier than Priya's review, but she is not the first person of the day.\n4. The 11:00 AM slot is assigned to Priya.\n5. Marcus is scheduled immediately before Tariq.\nWhat is the exact chronological schedule (time slot and person) for all 5 reviews?\n\nAnswer directly with the final numerical value or concise list without explaining your thought process.",
+        "raw_output": "9:00 AM: Elena\n10:00 AM: Chloe\n11:00 AM: Priya\n12:00 PM: Marcus\n1:00 PM: Tariq",
+        "latency_sec": 1.94
+      },
+      "chain_of_thought": {
+        "prompt": "Five colleagues—Elena, Marcus, Priya, Tariq, and Chloe—are scheduled for 1-on-1 performance reviews between 9:00 AM and 2:00 PM on Monday. Each review lasts exactly 1 hour, starting on the hour (9:00 AM, 10:00 AM, 11:00 AM, 12:00 PM, 1:00 PM).\nConstraints:\n1. Elena's review is scheduled earlier than Priya's review, and Priya's review is scheduled earlier than Marcus's review.\n2. Tariq's review is scheduled for the last slot of the day (1:00 PM).\n3. Chloe's review is scheduled earlier than Priya's review, but she is not the first person of the day.\n4. The 11:00 AM slot is assigned to Priya.\n5. Marcus is scheduled immediately before Tariq.\nWhat is the exact chronological schedule (time slot and person) for all 5 reviews?\n\nThink step by step. Show your step-by-step intermediate calculations or deductions carefully, identify any constraints or potential traps, and then state the final answer clearly at the end.",
+        "raw_output": "To find the exact chronological schedule for the five colleagues, let's analyze the given constraints step by step:\n\n1. **Understand the time slots:** There are 5 available 1-hour slots:\n   - 9:00 AM\n   - 10:00 AM\n   - 11:00 AM\n   - 12:00 PM\n   - 1:00 PM (Last slot of the day)\n\n2. **Analyze Constraint 4:** \"The 11:00 AM slot is assigned to Priya.\"\n   - *Current assignment:* 11:00 AM = Priya.\n\n3. **Analyze Constraint 2:** \"Tariq's review is scheduled for the last slot of the day (1:00 PM).\"\n   - *Current assignment:* 1:00 PM = Tariq.\n\n4. **Analyze Constraint 5:** \"Marcus is scheduled immediately before Tariq.\"\n   - Since Tariq is at 1:00 PM, Marcus must be in the slot immediately preceding 1:00 PM, which is 12:00 PM.\n   - *Current assignment:* 12:00 PM = Marcus.\n\n5. **Analyze Constraint 1:** \"Elena's review is scheduled earlier than Priya's review, and Priya's review is scheduled earlier than Marcus's review.\"\n   - We already know Priya is at 11:00 AM and Marcus is at 12:00 PM, which satisfies the second part of this constraint (Priya before Marcus).\n   - For Elena, her review must be *earlier* than Priya's (11:00 AM). This means Elena must be in either the 9:00 AM or 10:00 AM slot.\n\n6. **Analyze Constraint 3:** \"Chloe's review is scheduled earlier than Priya's review, but she is not the first person of the day.\"\n   - Since Chloe's review is earlier than Priya's (11:00 AM), she must also be in either the 9:00 AM or 10:00 AM slot.\n   - However, she is *not* the first person of the day (meaning she cannot be at 9:00 AM). Therefore, Chloe must be at **10:00 AM**.\n\n7. **Determine the remaining slot:**\n   - We have placed Chloe (10:00 AM), Priya (11:00 AM), Marcus (12:00 PM), and Tariq (1:00 PM).\n   - The only remaining person is Elena, and the only remaining empty slot is 9:00 AM.\n   - Therefore, Elena must be at **9:00 AM**.\n\n8. **Verify against all constraints:**\n   - *Constraint 1:* Elena (9:00 AM) < Priya (11:00 AM) < Marcus (12:00 PM). **(Holds)**\n   - *Constraint 2:* Tariq is at 1:00 PM. **(Holds)**\n   - *Constraint 3:* Chloe (10:00 AM) < Priya (11:00 AM), and Chloe is not at 9:00 AM. **(Holds)**\n   - *Constraint 4:* 11:00 AM is Priya. **(Holds)**\n   - *Constraint 5:* Marcus (12:00 PM) is immediately before Tariq (1:00 PM). **(Holds)**\n\n***\n\n### Final Answer:\n* **9:00 AM:** Elena\n* **10:00 AM:** Chloe\n* **11:00 AM:** Priya\n* **12:00 PM:** Marcus\n* **1:00 PM:** Tariq",
+        "latency_sec": 3.182
+      }
+    }
+  ],
+  "experiment_3_structured_output": {
+    "strategy_a_naive": [
+      {
+        "receipt_id": "Receipt_1_Dinner",
+        "raw_output": "```json\n{\n  \"merchant\": \"Bistro Le Marais\",\n  \"location\": \"NYC\",\n  \"date\": \"2026-10-24\",\n  \"category\": \"Meals & Entertainment\",\n  \"purpose\": \"Client acquisition\",\n  \"payment_method\": \"Amex\",\n  \"card_last_four\": \"4012\",\n  \"line_items\": [\n    {\n      \"description\": \"Ribeye steak\",\n      \"quantity\": 2,\n      \"unit_price\": 65.00,\n      \"total_price\": 130.00\n    },\n    {\n      \"description\": \"Pinot Noir (bottle)\",\n      \"quantity\": 1,\n      \"unit_price\": 55.00,\n      \"total_price\": 55.00\n    }\n  ],\n  \"subtotal\": 185.00,\n  \"tax\": 16.50,\n  \"tip\": 35.00,\n  \"tip_method\": \"Cash\",\n  \"total_paid\": 220.00\n}\n```",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": true,
+          "schema_conformant": false,
+          "missing_keys": [
+            "currency",
+            "total_amount",
+            "tax_amount",
+            "is_reimbursable"
+          ],
+          "parsed_data": {
+            "merchant": "Bistro Le Marais",
+            "location": "NYC",
+            "date": "2026-10-24",
+            "category": "Meals & Entertainment",
+            "purpose": "Client acquisition",
+            "payment_method": "Amex",
+            "card_last_four": "4012",
+            "line_items": [
+              {
+                "description": "Ribeye steak",
+                "quantity": 2,
+                "unit_price": 65.0,
+                "total_price": 130.0
+              },
+              {
+                "description": "Pinot Noir (bottle)",
+                "quantity": 1,
+                "unit_price": 55.0,
+                "total_price": 55.0
+              }
+            ],
+            "subtotal": 185.0,
+            "tax": 16.5,
+            "tip": 35.0,
+            "tip_method": "Cash",
+            "total_paid": 220.0
+          }
+        },
+        "latency_sec": 2.558
+      },
+      {
+        "receipt_id": "Receipt_2_Software_Coupon",
+        "raw_output": "```json\n{\n  \"vendor\": \"Linear Software Inc.\",\n  \"date\": \"2026-10-15\",\n  \"payment_method\": \"Company Visa card\",\n  \"line_items\": [\n    {\n      \"description\": \"Annual team license (Base subscription)\",\n      \"quantity\": 5,\n      \"unit_price\": 120.00,\n      \"total\": 600.00\n    }\n  ],\n  \"subtotal\": 600.00,\n  \"discounts\": [\n    {\n      \"description\": \"Welcome coupon\",\n      \"amount\": 50.00\n    }\n  ],\n  \"net_before_tax\": 550.00,\n  \"tax\": 44.00,\n  \"grand_total\": 594.00,\n  \"currency\": \"USD\",\n  \"expense_category\": \"Technology & Software\",\n  \"reimbursable\": true\n}\n```",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": true,
+          "schema_conformant": false,
+          "missing_keys": [
+            "merchant",
+            "total_amount",
+            "tax_amount",
+            "category",
+            "is_reimbursable"
+          ],
+          "parsed_data": {
+            "vendor": "Linear Software Inc.",
+            "date": "2026-10-15",
+            "payment_method": "Company Visa card",
+            "line_items": [
+              {
+                "description": "Annual team license (Base subscription)",
+                "quantity": 5,
+                "unit_price": 120.0,
+                "total": 600.0
+              }
+            ],
+            "subtotal": 600.0,
+            "discounts": [
+              {
+                "description": "Welcome coupon",
+                "amount": 50.0
+              }
+            ],
+            "net_before_tax": 550.0,
+            "tax": 44.0,
+            "grand_total": 594.0,
+            "currency": "USD",
+            "expense_category": "Technology & Software",
+            "reimbursable": true
+          }
+        },
+        "latency_sec": 1.92
+      },
+      {
+        "receipt_id": "Receipt_3_Airport_Ride",
+        "raw_output": "```json\n{\n  \"card_issuer\": \"Chase\",\n  \"card_last_four\": \"8831\",\n  \"merchant\": \"UBER *TRIP\",\n  \"location\": \"SAN FRANCISCO CA\",\n  \"date\": \"10/18/2026\",\n  \"total_amount\": 62.85,\n  \"currency\": \"USD\",\n  \"line_items\": [\n    {\n      \"description\": \"Ride fare\",\n      \"quantity\": 1,\n      \"amount\": 54.10\n    },\n    {\n      \"description\": \"SFO Airport surcharge\",\n      \"quantity\": 1,\n      \"amount\": 5.00\n    },\n    {\n      \"description\": \"Bay Bridge Toll\",\n      \"quantity\": 1,\n      \"amount\": 3.75\n    }\n  ],\n  \"tax\": 0.00,\n  \"expense_category\": \"Business Travel & Lodging\"\n}\n```",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": true,
+          "schema_conformant": false,
+          "missing_keys": [
+            "tax_amount",
+            "payment_method",
+            "category",
+            "is_reimbursable"
+          ],
+          "parsed_data": {
+            "card_issuer": "Chase",
+            "card_last_four": "8831",
+            "merchant": "UBER *TRIP",
+            "location": "SAN FRANCISCO CA",
+            "date": "10/18/2026",
+            "total_amount": 62.85,
+            "currency": "USD",
+            "line_items": [
+              {
+                "description": "Ride fare",
+                "quantity": 1,
+                "amount": 54.1
+              },
+              {
+                "description": "SFO Airport surcharge",
+                "quantity": 1,
+                "amount": 5.0
+              },
+              {
+                "description": "Bay Bridge Toll",
+                "quantity": 1,
+                "amount": 3.75
+              }
+            ],
+            "tax": 0.0,
+            "expense_category": "Business Travel & Lodging"
+          }
+        },
+        "latency_sec": 1.351
+      },
+      {
+        "receipt_id": "Receipt_4_European_Format",
+        "raw_output": "```json\n{\n  \"invoice_number\": \"89211\",\n  \"vendor\": {\n    \"name\": \"CloudScale GmbH\",\n    \"city\": \"Berlin\"\n  },\n  \"date\": \"2026-11-05\",\n  \"payment_method\": \"SEPA Wire Transfer\",\n  \"line_items\": [\n    {\n      \"position\": 1,\n      \"description\": \"Dedicated Server Hosting Oct 2026\",\n      \"quantity\": 1,\n      \"unit_price\": 450.00,\n      \"total_price\": 450.00\n    },\n    {\n      \"position\": 2,\n      \"description\": \"Backup Storage Add-on 2TB\",\n      \"quantity\": 2,\n      \"unit_price\": 25.00,\n      \"total_price\": 50.00\n    }\n  ],\n  \"subtotal\": 500.00,\n  \"tax\": {\n    \"rate_percent\": 19,\n    \"amount\": 95.00\n  },\n  \"total_amount\": 595.00,\n  \"currency\": \"EUR\",\n  \"category\": \"Technology & Software\",\n  \"business_expense\": true\n}\n```",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": true,
+          "schema_conformant": false,
+          "missing_keys": [
+            "merchant",
+            "tax_amount",
+            "is_reimbursable"
+          ],
+          "parsed_data": {
+            "invoice_number": "89211",
+            "vendor": {
+              "name": "CloudScale GmbH",
+              "city": "Berlin"
+            },
+            "date": "2026-11-05",
+            "payment_method": "SEPA Wire Transfer",
+            "line_items": [
+              {
+                "position": 1,
+                "description": "Dedicated Server Hosting Oct 2026",
+                "quantity": 1,
+                "unit_price": 450.0,
+                "total_price": 450.0
+              },
+              {
+                "position": 2,
+                "description": "Backup Storage Add-on 2TB",
+                "quantity": 2,
+                "unit_price": 25.0,
+                "total_price": 50.0
+              }
+            ],
+            "subtotal": 500.0,
+            "tax": {
+              "rate_percent": 19,
+              "amount": 95.0
+            },
+            "total_amount": 595.0,
+            "currency": "EUR",
+            "category": "Technology & Software",
+            "business_expense": true
+          }
+        },
+        "latency_sec": 2.299
+      },
+      {
+        "receipt_id": "Receipt_5_Store_Mixed",
+        "raw_output": "```json\n{\n  \"merchant\": \"Staples Store #0412\",\n  \"date\": \"10/22/2026\",\n  \"payment_method\": \"Mastercard\",\n  \"category\": \"Office Supplies\",\n  \"items\": [\n    {\n      \"description\": \"Ergonomic Wireless Mouse\",\n      \"quantity\": 1,\n      \"unit_price\": 49.99,\n      \"total_price\": 49.99,\n      \"reimbursable\": true\n    },\n    {\n      \"description\": \"printer paper\",\n      \"quantity\": 3,\n      \"unit_price\": 8.50,\n      \"total_price\": 25.50,\n      \"reimbursable\": true\n    },\n    {\n      \"description\": \"personal chocolate bar\",\n      \"quantity\": 1,\n      \"unit_price\": 2.50,\n      \"total_price\": 2.50,\n      \"reimbursable\": false\n    }\n  ],\n  \"subtotal_eligible\": 75.49,\n  \"store_coupon\": -10.00,\n  \"net_eligible\": 65.49,\n  \"sales_tax\": 5.24,\n  \"total_charged_business\": 70.73,\n  \"currency\": \"USD\"\n}\n```",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": true,
+          "schema_conformant": false,
+          "missing_keys": [
+            "total_amount",
+            "tax_amount",
+            "line_items",
+            "is_reimbursable"
+          ],
+          "parsed_data": {
+            "merchant": "Staples Store #0412",
+            "date": "10/22/2026",
+            "payment_method": "Mastercard",
+            "category": "Office Supplies",
+            "items": [
+              {
+                "description": "Ergonomic Wireless Mouse",
+                "quantity": 1,
+                "unit_price": 49.99,
+                "total_price": 49.99,
+                "reimbursable": true
+              },
+              {
+                "description": "printer paper",
+                "quantity": 3,
+                "unit_price": 8.5,
+                "total_price": 25.5,
+                "reimbursable": true
+              },
+              {
+                "description": "personal chocolate bar",
+                "quantity": 1,
+                "unit_price": 2.5,
+                "total_price": 2.5,
+                "reimbursable": false
+              }
+            ],
+            "subtotal_eligible": 75.49,
+            "store_coupon": -10.0,
+            "net_eligible": 65.49,
+            "sales_tax": 5.24,
+            "total_charged_business": 70.73,
+            "currency": "USD"
+          }
+        },
+        "latency_sec": 2.468
+      },
+      {
+        "receipt_id": "Receipt_6_Credit_Adjustment",
+        "raw_output": "```json\n{\n  \"vendor\": \"AWS Cloud Services\",\n  \"date\": \"2026-09-30\",\n  \"account_number\": \"*1094\",\n  \"original_bill_amount\": 320.00,\n  \"currency\": \"USD\",\n  \"payment_method\": \"Corporate Debit\",\n  \"credits\": [\n    {\n      \"description\": \"SLA service outage credit\",\n      \"amount\": -80.00\n    }\n  ],\n  \"revised_total\": 240.00,\n  \"tax\": 19.20,\n  \"line_items\": [\n    {\n      \"description\": \"Cloud Compute EC2 instances\",\n      \"quantity\": 1,\n      \"unit_price\": 240.00,\n      \"total_price\": 240.00\n    }\n  ],\n  \"expense_category\": \"Technology & Software\"\n}\n```",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": true,
+          "schema_conformant": false,
+          "missing_keys": [
+            "merchant",
+            "total_amount",
+            "tax_amount",
+            "category",
+            "is_reimbursable"
+          ],
+          "parsed_data": {
+            "vendor": "AWS Cloud Services",
+            "date": "2026-09-30",
+            "account_number": "*1094",
+            "original_bill_amount": 320.0,
+            "currency": "USD",
+            "payment_method": "Corporate Debit",
+            "credits": [
+              {
+                "description": "SLA service outage credit",
+                "amount": -80.0
+              }
+            ],
+            "revised_total": 240.0,
+            "tax": 19.2,
+            "line_items": [
+              {
+                "description": "Cloud Compute EC2 instances",
+                "quantity": 1,
+                "unit_price": 240.0,
+                "total_price": 240.0
+              }
+            ],
+            "expense_category": "Technology & Software"
+          }
+        },
+        "latency_sec": 9.972
+      }
+    ],
+    "strategy_b_explicit_schema": [
+      {
+        "receipt_id": "Receipt_1_Dinner",
+        "raw_output": "{\n  \"merchant\": \"Bistro Le Marais\",\n  \"date\": \"2026-10-24\",\n  \"currency\": \"USD\",\n  \"total_amount\": 220.00,\n  \"tax_amount\": 16.50,\n  \"payment_method\": \"Amex\",\n  \"category\": \"Meals & Entertainment\",\n  \"line_items\": [\n    {\n      \"description\": \"ribeye steak\",\n      \"quantity\": 2,\n      \"unit_price\": 65.0,\n      \"total\": 130.0\n    },\n    {\n      \"description\": \"bottle of Pinot Noir\",\n      \"quantity\": 1,\n      \"unit_price\": 55.0,\n      \"total\": 55.0\n    }\n  ],\n  \"is_reimbursable\": true\n}",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": false,
+          "schema_conformant": true,
+          "missing_keys": [],
+          "parsed_data": {
+            "merchant": "Bistro Le Marais",
+            "date": "2026-10-24",
+            "currency": "USD",
+            "total_amount": 220.0,
+            "tax_amount": 16.5,
+            "payment_method": "Amex",
+            "category": "Meals & Entertainment",
+            "line_items": [
+              {
+                "description": "ribeye steak",
+                "quantity": 2,
+                "unit_price": 65.0,
+                "total": 130.0
+              },
+              {
+                "description": "bottle of Pinot Noir",
+                "quantity": 1,
+                "unit_price": 55.0,
+                "total": 55.0
+              }
+            ],
+            "is_reimbursable": true
+          }
+        },
+        "latency_sec": 1.124
+      },
+      {
+        "receipt_id": "Receipt_2_Software_Coupon",
+        "raw_output": "{\n  \"merchant\": \"Linear Software Inc.\",\n  \"date\": \"2026-10-15\",\n  \"currency\": \"USD\",\n  \"total_amount\": 594.00,\n  \"tax_amount\": 44.00,\n  \"payment_method\": \"Visa\",\n  \"category\": \"Technology & Software\",\n  \"line_items\": [\n    {\n      \"description\": \"Annual team license (seats)\",\n      \"quantity\": 5,\n      \"unit_price\": 120.00,\n      \"total\": 600.00\n    },\n    {\n      \"description\": \"Welcome coupon\",\n      \"quantity\": 1,\n      \"unit_price\": -50.00,\n      \"total\": -50.00\n    }\n  ],\n  \"is_reimbursable\": true\n}",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": false,
+          "schema_conformant": true,
+          "missing_keys": [],
+          "parsed_data": {
+            "merchant": "Linear Software Inc.",
+            "date": "2026-10-15",
+            "currency": "USD",
+            "total_amount": 594.0,
+            "tax_amount": 44.0,
+            "payment_method": "Visa",
+            "category": "Technology & Software",
+            "line_items": [
+              {
+                "description": "Annual team license (seats)",
+                "quantity": 5,
+                "unit_price": 120.0,
+                "total": 600.0
+              },
+              {
+                "description": "Welcome coupon",
+                "quantity": 1,
+                "unit_price": -50.0,
+                "total": -50.0
+              }
+            ],
+            "is_reimbursable": true
+          }
+        },
+        "latency_sec": 1.596
+      },
+      {
+        "receipt_id": "Receipt_3_Airport_Ride",
+        "raw_output": "{\n  \"merchant\": \"UBER\",\n  \"date\": \"2026-10-18\",\n  \"currency\": \"USD\",\n  \"total_amount\": 62.85,\n  \"tax_amount\": 0.0,\n  \"payment_method\": \"Chase Card *8831\",\n  \"category\": \"Travel & Lodging\",\n  \"line_items\": [\n    {\n      \"description\": \"Ride fare\",\n      \"quantity\": 1,\n      \"unit_price\": 54.10,\n      \"total\": 54.10\n    },\n    {\n      \"description\": \"SFO Airport surcharge\",\n      \"quantity\": 1,\n      \"unit_price\": 5.00,\n      \"total\": 5.00\n    },\n    {\n      \"description\": \"Bay Bridge Toll\",\n      \"quantity\": 1,\n      \"unit_price\": 3.75,\n      \"total\": 3.75\n    }\n  ],\n  \"is_reimbursable\": true\n}",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": false,
+          "schema_conformant": true,
+          "missing_keys": [],
+          "parsed_data": {
+            "merchant": "UBER",
+            "date": "2026-10-18",
+            "currency": "USD",
+            "total_amount": 62.85,
+            "tax_amount": 0.0,
+            "payment_method": "Chase Card *8831",
+            "category": "Travel & Lodging",
+            "line_items": [
+              {
+                "description": "Ride fare",
+                "quantity": 1,
+                "unit_price": 54.1,
+                "total": 54.1
+              },
+              {
+                "description": "SFO Airport surcharge",
+                "quantity": 1,
+                "unit_price": 5.0,
+                "total": 5.0
+              },
+              {
+                "description": "Bay Bridge Toll",
+                "quantity": 1,
+                "unit_price": 3.75,
+                "total": 3.75
+              }
+            ],
+            "is_reimbursable": true
+          }
+        },
+        "latency_sec": 1.302
+      },
+      {
+        "receipt_id": "Receipt_4_European_Format",
+        "raw_output": "{\n  \"merchant\": \"CloudScale GmbH\",\n  \"date\": \"2026-11-05\",\n  \"currency\": \"EUR\",\n  \"total_amount\": 595.0,\n  \"tax_amount\": 95.0,\n  \"payment_method\": \"SEPA Wire Transfer\",\n  \"category\": \"Technology & Software\",\n  \"line_items\": [\n    {\n      \"description\": \"Dedicated Server Hosting Oct 2026\",\n      \"quantity\": 1,\n      \"unit_price\": 450.0,\n      \"total\": 450.0\n    },\n    {\n      \"description\": \"Backup Storage Add-on 2TB\",\n      \"quantity\": 2,\n      \"unit_price\": 25.0,\n      \"total\": 50.0\n    }\n  ],\n  \"is_reimbursable\": true\n}",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": false,
+          "schema_conformant": true,
+          "missing_keys": [],
+          "parsed_data": {
+            "merchant": "CloudScale GmbH",
+            "date": "2026-11-05",
+            "currency": "EUR",
+            "total_amount": 595.0,
+            "tax_amount": 95.0,
+            "payment_method": "SEPA Wire Transfer",
+            "category": "Technology & Software",
+            "line_items": [
+              {
+                "description": "Dedicated Server Hosting Oct 2026",
+                "quantity": 1,
+                "unit_price": 450.0,
+                "total": 450.0
+              },
+              {
+                "description": "Backup Storage Add-on 2TB",
+                "quantity": 2,
+                "unit_price": 25.0,
+                "total": 50.0
+              }
+            ],
+            "is_reimbursable": true
+          }
+        },
+        "latency_sec": 2.903
+      },
+      {
+        "receipt_id": "Receipt_5_Store_Mixed",
+        "raw_output": "{\n  \"merchant\": \"Staples Store #0412\",\n  \"date\": \"2026-10-22\",\n  \"currency\": \"USD\",\n  \"total_amount\": 70.73,\n  \"tax_amount\": 5.24,\n  \"payment_method\": \"Mastercard\",\n  \"category\": \"Office Supplies\",\n  \"line_items\": [\n    {\n      \"description\": \"Ergonomic Wireless Mouse\",\n      \"quantity\": 1,\n      \"unit_price\": 49.99,\n      \"total\": 49.99\n    },\n    {\n      \"description\": \"printer paper\",\n      \"quantity\": 3,\n      \"unit_price\": 8.5,\n      \"total\": 25.5\n    }\n  ],\n  \"is_reimbursable\": true\n}",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": false,
+          "schema_conformant": true,
+          "missing_keys": [],
+          "parsed_data": {
+            "merchant": "Staples Store #0412",
+            "date": "2026-10-22",
+            "currency": "USD",
+            "total_amount": 70.73,
+            "tax_amount": 5.24,
+            "payment_method": "Mastercard",
+            "category": "Office Supplies",
+            "line_items": [
+              {
+                "description": "Ergonomic Wireless Mouse",
+                "quantity": 1,
+                "unit_price": 49.99,
+                "total": 49.99
+              },
+              {
+                "description": "printer paper",
+                "quantity": 3,
+                "unit_price": 8.5,
+                "total": 25.5
+              }
+            ],
+            "is_reimbursable": true
+          }
+        },
+        "latency_sec": 4.937
+      },
+      {
+        "receipt_id": "Receipt_6_Credit_Adjustment",
+        "raw_output": "{\n  \"merchant\": \"AWS Cloud Services\",\n  \"date\": \"2026-09-30\",\n  \"currency\": \"USD\",\n  \"total_amount\": 240.00,\n  \"tax_amount\": 19.20,\n  \"payment_method\": \"Corporate Debit\",\n  \"category\": \"Technology & Software\",\n  \"line_items\": [\n    {\n      \"description\": \"Cloud Compute EC2 instances\",\n      \"quantity\": 1,\n      \"unit_price\": 240.00,\n      \"total\": 240.00\n    }\n  ],\n  \"is_reimbursable\": true\n}",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": false,
+          "schema_conformant": true,
+          "missing_keys": [],
+          "parsed_data": {
+            "merchant": "AWS Cloud Services",
+            "date": "2026-09-30",
+            "currency": "USD",
+            "total_amount": 240.0,
+            "tax_amount": 19.2,
+            "payment_method": "Corporate Debit",
+            "category": "Technology & Software",
+            "line_items": [
+              {
+                "description": "Cloud Compute EC2 instances",
+                "quantity": 1,
+                "unit_price": 240.0,
+                "total": 240.0
+              }
+            ],
+            "is_reimbursable": true
+          }
+        },
+        "latency_sec": 7.624
+      }
+    ],
+    "strategy_c_api_json_mode": [
+      {
+        "receipt_id": "Receipt_1_Dinner",
+        "raw_output": "{\n  \"merchant\": \"Bistro Le Marais\",\n  \"date\": \"2026-10-24\",\n  \"currency\": \"USD\",\n  \"total_amount\": 220.00,\n  \"tax_amount\": 16.50,\n  \"payment_method\": \"Amex ending in 4012 (with cash tip)\",\n  \"category\": \"Meals & Entertainment\",\n  \"line_items\": [\n    {\n      \"description\": \"Ribeye steak\",\n      \"quantity\": 2,\n      \"unit_price\": 65.00,\n      \"total\": 130.00\n    },\n    {\n      \"description\": \"Bottle of Pinot Noir\",\n      \"quantity\": 1,\n      \"unit_price\": 55.00,\n      \"total\": 55.00\n    }\n  ],\n  \"is_reimbursable\": true\n}",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": false,
+          "schema_conformant": true,
+          "missing_keys": [],
+          "parsed_data": {
+            "merchant": "Bistro Le Marais",
+            "date": "2026-10-24",
+            "currency": "USD",
+            "total_amount": 220.0,
+            "tax_amount": 16.5,
+            "payment_method": "Amex ending in 4012 (with cash tip)",
+            "category": "Meals & Entertainment",
+            "line_items": [
+              {
+                "description": "Ribeye steak",
+                "quantity": 2,
+                "unit_price": 65.0,
+                "total": 130.0
+              },
+              {
+                "description": "Bottle of Pinot Noir",
+                "quantity": 1,
+                "unit_price": 55.0,
+                "total": 55.0
+              }
+            ],
+            "is_reimbursable": true
+          }
+        },
+        "latency_sec": 2.107
+      },
+      {
+        "receipt_id": "Receipt_2_Software_Coupon",
+        "raw_output": "{\n  \"merchant\": \"Linear Software Inc.\",\n  \"date\": \"2026-10-15\",\n  \"currency\": \"USD\",\n  \"total_amount\": 594.00,\n  \"tax_amount\": 44.00,\n  \"payment_method\": \"Visa\",\n  \"category\": \"Technology & Software\",\n  \"line_items\": [\n    {\n      \"description\": \"Annual team license (5 seats)\",\n      \"quantity\": 5,\n      \"unit_price\": 120.00,\n      \"total\": 600.00\n    },\n    {\n      \"description\": \"Welcome coupon\",\n      \"quantity\": 1,\n      \"unit_price\": -50.00,\n      \"total\": -50.00\n    }\n  ],\n  \"is_reimbursable\": true\n}",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": false,
+          "schema_conformant": true,
+          "missing_keys": [],
+          "parsed_data": {
+            "merchant": "Linear Software Inc.",
+            "date": "2026-10-15",
+            "currency": "USD",
+            "total_amount": 594.0,
+            "tax_amount": 44.0,
+            "payment_method": "Visa",
+            "category": "Technology & Software",
+            "line_items": [
+              {
+                "description": "Annual team license (5 seats)",
+                "quantity": 5,
+                "unit_price": 120.0,
+                "total": 600.0
+              },
+              {
+                "description": "Welcome coupon",
+                "quantity": 1,
+                "unit_price": -50.0,
+                "total": -50.0
+              }
+            ],
+            "is_reimbursable": true
+          }
+        },
+        "latency_sec": 2.402
+      },
+      {
+        "receipt_id": "Receipt_3_Airport_Ride",
+        "raw_output": "{\n  \"merchant\": \"UBER *TRIP\",\n  \"date\": \"2026-10-18\",\n  \"currency\": \"USD\",\n  \"total_amount\": 62.85,\n  \"tax_amount\": 0.00,\n  \"payment_method\": \"Chase Card *8831\",\n  \"category\": \"Travel & Lodging\",\n  \"line_items\": [\n    {\n      \"description\": \"Ride fare\",\n      \"quantity\": 1,\n      \"unit_price\": 54.10,\n      \"total\": 54.10\n    },\n    {\n      \"description\": \"SFO Airport surcharge\",\n      \"quantity\": 1,\n      \"unit_price\": 5.00,\n      \"total\": 5.00\n    },\n    {\n      \"description\": \"Bay Bridge Toll\",\n      \"quantity\": 1,\n      \"unit_price\": 3.75,\n      \"total\": 3.75\n    }\n  ],\n  \"is_reimbursable\": true\n}",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": false,
+          "schema_conformant": true,
+          "missing_keys": [],
+          "parsed_data": {
+            "merchant": "UBER *TRIP",
+            "date": "2026-10-18",
+            "currency": "USD",
+            "total_amount": 62.85,
+            "tax_amount": 0.0,
+            "payment_method": "Chase Card *8831",
+            "category": "Travel & Lodging",
+            "line_items": [
+              {
+                "description": "Ride fare",
+                "quantity": 1,
+                "unit_price": 54.1,
+                "total": 54.1
+              },
+              {
+                "description": "SFO Airport surcharge",
+                "quantity": 1,
+                "unit_price": 5.0,
+                "total": 5.0
+              },
+              {
+                "description": "Bay Bridge Toll",
+                "quantity": 1,
+                "unit_price": 3.75,
+                "total": 3.75
+              }
+            ],
+            "is_reimbursable": true
+          }
+        },
+        "latency_sec": 2.936
+      },
+      {
+        "receipt_id": "Receipt_4_European_Format",
+        "raw_output": "{\n  \"merchant\": \"CloudScale GmbH\",\n  \"date\": \"2026-11-05\",\n  \"currency\": \"EUR\",\n  \"total_amount\": 595.0,\n  \"tax_amount\": 95.0,\n  \"payment_method\": \"SEPA Wire Transfer\",\n  \"category\": \"Technology & Software\",\n  \"line_items\": [\n    {\n      \"description\": \"Dedicated Server Hosting Oct 2026\",\n      \"quantity\": 1,\n      \"unit_price\": 450.0,\n      \"total\": 450.0\n    },\n    {\n      \"description\": \"Backup Storage Add-on 2TB\",\n      \"quantity\": 2,\n      \"unit_price\": 25.0,\n      \"total\": 50.0\n    }\n  ],\n  \"is_reimbursable\": true\n}",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": false,
+          "schema_conformant": true,
+          "missing_keys": [],
+          "parsed_data": {
+            "merchant": "CloudScale GmbH",
+            "date": "2026-11-05",
+            "currency": "EUR",
+            "total_amount": 595.0,
+            "tax_amount": 95.0,
+            "payment_method": "SEPA Wire Transfer",
+            "category": "Technology & Software",
+            "line_items": [
+              {
+                "description": "Dedicated Server Hosting Oct 2026",
+                "quantity": 1,
+                "unit_price": 450.0,
+                "total": 450.0
+              },
+              {
+                "description": "Backup Storage Add-on 2TB",
+                "quantity": 2,
+                "unit_price": 25.0,
+                "total": 50.0
+              }
+            ],
+            "is_reimbursable": true
+          }
+        },
+        "latency_sec": 3.075
+      },
+      {
+        "receipt_id": "Receipt_5_Store_Mixed",
+        "raw_output": "{\n  \"merchant\": \"Staples Store #0412\",\n  \"date\": \"2026-10-22\",\n  \"currency\": \"USD\",\n  \"total_amount\": 70.73,\n  \"tax_amount\": 5.24,\n  \"payment_method\": \"Mastercard\",\n  \"category\": \"Office Supplies\",\n  \"line_items\": [\n    {\n      \"description\": \"Ergonomic Wireless Mouse\",\n      \"quantity\": 1,\n      \"unit_price\": 49.99,\n      \"total\": 49.99\n    },\n    {\n      \"description\": \"printer paper\",\n      \"quantity\": 3,\n      \"unit_price\": 8.5,\n      \"total\": 25.5\n    }\n  ],\n  \"is_reimbursable\": true\n}",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": false,
+          "schema_conformant": true,
+          "missing_keys": [],
+          "parsed_data": {
+            "merchant": "Staples Store #0412",
+            "date": "2026-10-22",
+            "currency": "USD",
+            "total_amount": 70.73,
+            "tax_amount": 5.24,
+            "payment_method": "Mastercard",
+            "category": "Office Supplies",
+            "line_items": [
+              {
+                "description": "Ergonomic Wireless Mouse",
+                "quantity": 1,
+                "unit_price": 49.99,
+                "total": 49.99
+              },
+              {
+                "description": "printer paper",
+                "quantity": 3,
+                "unit_price": 8.5,
+                "total": 25.5
+              }
+            ],
+            "is_reimbursable": true
+          }
+        },
+        "latency_sec": 9.062
+      },
+      {
+        "receipt_id": "Receipt_6_Credit_Adjustment",
+        "raw_output": "{\n  \"merchant\": \"AWS Cloud Services\",\n  \"date\": \"2026-09-30\",\n  \"currency\": \"USD\",\n  \"total_amount\": 240.00,\n  \"tax_amount\": 19.20,\n  \"payment_method\": \"Corporate Debit\",\n  \"category\": \"Technology & Software\",\n  \"line_items\": [\n    {\n      \"description\": \"Cloud Compute EC2 instances\",\n      \"quantity\": 1,\n      \"unit_price\": 240.00,\n      \"total\": 240.00\n    }\n  ],\n  \"is_reimbursable\": true\n}",
+        "validation": {
+          "is_valid_json": true,
+          "had_markdown_fences": false,
+          "schema_conformant": true,
+          "missing_keys": [],
+          "parsed_data": {
+            "merchant": "AWS Cloud Services",
+            "date": "2026-09-30",
+            "currency": "USD",
+            "total_amount": 240.0,
+            "tax_amount": 19.2,
+            "payment_method": "Corporate Debit",
+            "category": "Technology & Software",
+            "line_items": [
+              {
+                "description": "Cloud Compute EC2 instances",
+                "quantity": 1,
+                "unit_price": 240.0,
+                "total": 240.0
+              }
+            ],
+            "is_reimbursable": true
+          }
+        },
+        "latency_sec": 1.293
+      }
+    ]
+  }
+}
